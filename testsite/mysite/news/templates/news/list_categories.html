@@ -1,0 +1,11 @@
+<h2 class="text-dark text-center">Список категорий</h2>
+        <div class="list-group list-group">
+        <a href="{% url 'home' %}" 
+          class="list-group-item list-group-item-action list-group-item-dark">Все категории</a>
+          {% for item in categories %}
+          <a href="{{ item.get_absolute_url }}" 
+          class="list-group-item list-group-item-action list-group-item-light">{{ item.title }}
+          <span class="badge badge-dark badge-pill">{{item.cnt}}</span></a>
+          
+          {% endfor %}
+        </div>

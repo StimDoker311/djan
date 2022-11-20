@@ -1,0 +1,28 @@
+{% extends 'base_no_sidebar.html' %}
+
+{% block title %}
+{{news_item.title}} :: {{block.super}}
+{% endblock  %}
+
+{% block content %}
+        <div class="card mb-3">
+<div class="card-header bg-dark text-light">
+              Категория:<a class="text-white" href="{{ news_item.category.get_absolute_url}}"> {{news_item.category}}</a>
+            </div>
+   {% if news_item.photo %}
+                    <img src="{{ news_item.photo.url }}" alt="" width="1108" height="300" class="text-center">
+                    {% else %}
+                            <img src="https://picsum.photos/id/1060/1200/300/?blur=2" alt="" 
+                            class="mr-0">
+                    {% endif %} 
+  <div class="card-body">
+    <h5 class="card-title">{{ news_item.title }}</h5>
+                            <hr></hr>                            
+                            <p class="card-text">{{ news_item.content|safe|linebreaks }}</p>
+  </div>
+  <div class="card-footer text-black bg-light ">
+              Прошло времени с момента публиакции:
+              {{ news_item.created_at|timesince }}
+            </div>
+</div>
+{% endblock %}
